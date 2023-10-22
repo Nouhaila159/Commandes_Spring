@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="fontAwesome/css/fontawesome.css" rel="stylesheet">
+    <link href="fontAwesome/css/brands.css" rel="stylesheet">
+    <link href="fontAwesome/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+    <script>
+        function motCle() {
+            var mc = document.getElementById("motcle").value;
+            location.href = 'http://localhost:8080/searchArticle?rech='+mc;
+        }
+    </script>
+
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+        <i class="bx bxl-c-plus-plus"></i>
+        <span class="logo_name">STOCK</span>
+    </div>
+    <ul class="nav-links">
+
+        <li>
+            <a th:href="@{/accueil}" >
+                <i class="bx bx-grid-alt"></i>
+                <span class="links_name">Accueil</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/ventes}">
+                <i class="bx bx-book-alt"></i>
+                <span class="links_name">Liste des ventes</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-book-alt"></i>
+                <span class="links_name">Modifier la vente</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/articles}" class="active">
+                <i class="bx bx-box"></i>
+                <span class="links_name">Liste des articles</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/addArticles}" >
+                <i class="bx bx-box"></i>
+                <span class="links_name">Nouveau article</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-box"></i>
+                <span class="links_name">Modifier article</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/clients}">
+                <i class="bx bx-user"></i>
+                <span class="links_name">Liste des clients</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-user"></i>
+                <span class="links_name">Modifier client</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/stock}">
+                <i class="bx bx-coin-stack"></i>
+                <span class="links_name">Stock</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/users}">
+                <i class="bx bx-user"></i>
+                <span class="links_name">Utilisateurs</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a th:href="@{/login}">
+                <i class="bx bx-log-out"></i>
+                <span class="links_name">Déconnexion</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
+            <span class="dashboard">Administrateur</span>
+        </div>
+        <div class="search-box">
+            <input id="motcle"  name="recherche" type="text" class="form-control" placeholder="Recherche par nom..." />
+            <i th:onclick="motCle()" class="bx bx-search"></i>
+        </div>
+    </nav>
+    <!-- CONTENU-->
+    <div class="home-content">
+        <div class="overview-boxes">
+            <div class="Container">
+                <H3><strong>L'article Cherché</strong></H3>
+                <table class="table table-striped">
+                    <thead >
+                    <th>Nom article</th>
+                    <th>Catégorie</th>
+                    <th>Quantité initiale</th>
+                    <th>Prix unitaire</th>
+                    <th>Date fabrication</th>
+                    <th>Date expiration</th>
+                    <th>Actions</th>
+                    </thead>
+                    <tbody>
+                    <tr th:each="a:${ArticleChercher}">
+                        <td th:text="${a.nomarticle}"></td>
+                        <td th:text="${a.categorie.categorieArticle}"></td>
+                        <td th:text="${a.quantite}"></td>
+                        <td th:text="${a.prix_unitaire}"></td>
+                        <td th:text="${a.date_fabrication}"></td>
+                        <td th:text="${a.date_expiration}"></td>
+                        <td><a onclick="return confirm('Etes-vous sur de vouloir supprimer?')"
+                               th:href="@{deleteArticle(id=${a.id})}" class="btn btn-danger">
+                            <i class="fa-solid fa-delete-left"></i></a>
+
+                            <a
+                                    th:href="@{updateArticle(id=${a.id})}" class="btn btn-success">
+                                <i class="fa-solid fa-edit"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- CONTENU-->
+
+<script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+            sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    };
+</script>
+</body>
+</html>
+<style>
+    /* INPUT */
+    input,
+    textarea,
+    select {
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 8px 0;
+        padding: 8px 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    . radio {
+        margin-bottom: 10px;
+        width: 20px;
+    }
+    button {
+        background-color: rgb(6, 183, 233);
+        color: white;
+        width: 150px;
+        height: 30px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+    label{
+        display: block;
+    }
+    form {
+        width: 100%;
+    }
+    /* Style Table */
+    /* table */
+    table.mtable {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+    th,
+    td {
+        text-align: left;
+        padding: 16px;
+    }
+    table.mtable tr:nth-child(even) {
+        background:#f2f2f2;
+    }
+    table.mtable td {
+        padding: 10px;
+    }
+    /* list */
+    ul.mtable,
+    ol.mtable {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    ul.mtable li,
+    ol.mtable li {
+        padding: 10px;
+    }
+    ul.mtable li:nth-child(even),
+    ol.mtable li:nth-child(even) {
+        background:#f2f2f2;}
+    .Container{
+        margin: 100;
+        min-width: 1200px;
+        max-height: 600px;
+        align-items: flex-start;
+    }
+</style>

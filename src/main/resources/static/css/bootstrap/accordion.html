@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+  <title>Autres objets bootstrap</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="popper.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Badges</h2>
+  <h1>Exemple du badge <span class="badge badge-secondary">Taille1</span></h1>
+  <h2>Exemple du badge <span class="badge badge-info">Taille2</span></h2>
+  <h3>Exemple du badge <span class="badge badge-pill badge-success">Taille3</span></h3>
+<div> 
+  <button type="button" class="btn btn-primary">
+  Messages <span class="badge badge-light">4</span>
+</button>
+</div>
+<h2>Objet Accordion</h2>  
+  <div id="accordion">
+
+  <div class="card">
+    <div class="card-header">
+      <a class="card-link" data-toggle="collapse" href="#collapseOne">
+        Group1
+      </a>
+    </div>
+    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+      <div class="card-body">
+        Contenue de la 1ème partie.....
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+        Groupe2
+      </a>
+    </div>
+    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+      <div class="card-body">
+        Contenue de la 2ème partie.....
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+        Groupe3
+      </a>
+    </div>
+    <div id="collapseThree" class="collapse" data-parent="#accordion">
+      <div class="card-body">
+        Contenue de la 3ème partie..
+      </div>
+    </div>
+  </div>
+<h3>Exemple profil</h3>
+  <div class="card" style="width:300px">
+  <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">WAlid Sayar</h4>
+    <p class="card-text">Ingenieur en genie informatique option developpement Web </p>
+    <a href="#" class="btn btn-primary">Profil</a>
+  </div>
+</div>
+
+
+</div> 
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="fontAwesome/css/fontawesome.css" rel="stylesheet">
+    <link href="fontAwesome/css/brands.css" rel="stylesheet">
+    <link href="fontAwesome/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}" >
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="sidebar">
+    <div class="logo-details">
+        <i class="bx bxl-c-plus-plus"></i>
+        <span class="logo_name">STOCK</span>
+    </div>
+    <ul class="nav-links">
+        <li>
+            <a th:href="@{/accueil}" >
+                <i class="bx bx-grid-alt"></i>
+                <span class="links_name">Accueil</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/ventes}">
+                <i class="bx bx-book-alt"></i>
+                <span class="links_name">Liste des ventes</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-book-alt"></i>
+                <span class="links_name">Modifier la vente</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/articles}">
+                <i class="bx bx-box"></i>
+                <span class="links_name">Liste des articles</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/addArticles}" >
+                <i class="bx bx-box"></i>
+                <span class="links_name">Nouveau article</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="active">
+                <i class="bx bx-box"></i>
+                <span class="links_name">Modifier article</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/clients}">
+                <i class="bx bx-user"></i>
+                <span class="links_name">Liste des clients</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="bx bx-user"></i>
+                <span class="links_name">Modifier client</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/stock}">
+                <i class="bx bx-coin-stack"></i>
+                <span class="links_name">Stock</span>
+            </a>
+        </li>
+        <li>
+            <a th:href="@{/users}">
+                <i class="bx bx-user"></i>
+                <span class="links_name">Utilisateurs</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a th:href="@{/login}">
+                <i class="bx bx-log-out"></i>
+                <span class="links_name">Déconnexion</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
+            <span class="dashboard">Administrateur</span>
+        </div>
+
+    </nav>
+    <!-- CONTENU-->
+    <div class="home-content">
+        <div class="overview-boxes">
+            <div class="Container">
+                <form th:action="@{newArticle}" method="post">
+                    <input type="hidden" th:value="${update_article?.id}" name="id">
+                    <label><strong>Modifier l'article</strong></label>
+                    <label >Nom de l'article</label>
+                    <input name="nomarticle" th:value="${update_article?.nomarticle}" type="text" class="form-control">
+                    <label>Catégorie</label>
+                    <select name="categorie" class="form-control">
+                        <option th:value="${update_article?.categorie.idcategorie}" th:text="${update_article?.categorie.categorieArticle}"></option>
+                        <option  th:each="c:${listeCategorie}"
+                                 th:value="${c.idcategorie}"
+                                 th:text="${c.categorieArticle}"
+                        >
+                        </option>
+                    </select>
+
+                    <label>Quantité</label>
+                    <input type="number" name="quantite" th:value="${update_article?.quantite}" class="form-control">
+                    <label >Prix unitaire</label>
+                    <input type="number" name="prix_unitaire" th:value="${update_article?.prix_unitaire}" class="form-control">
+                    <label >Date de fabrication</label>
+                    <input type="date" name="date_fabrication" th:value="${update_article?.date_fabrication}" class="form-control">
+                    <label >Date d'expiration</label>
+                    <input type="date" name="date_expiration" th:value="${update_article?.date_expiration}" class="form-control">
+                    <button type="submit">Modifier</button>
+
+                </form>
+                <!--
+                <form th:action="@{newCategorie}" method="post" name="id">
+                    <input type="hidden" th:value="${update_cat?.idcategorie}" name="idcategorie">
+                    <label ><strong>Modifier la categorie</strong></label>
+                    <input type="text" name="categorieArticle" th:value="${update_cat?.categorieArticle}" class="form-control">
+
+                    <button type="submit">Modifier</button>
+                </form> -->
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- CONTENU-->
+
+<script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+            sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    };
+</script>
+</body>
+</html>
+<style>
+    /* INPUT */
+    input,
+    textarea,
+    select {
+        margin-bottom: 10px;
+        box-sizing: border-box;
+        width: 100%;
+        margin: 8px 0;
+        padding: 8px 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    . radio {
+        margin-bottom: 10px;
+        width: 20px;
+    }
+    button {
+        background-color: rgb(6, 183, 233);
+        color: white;
+        width: 150px;
+        height: 30px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        border-radius: 5px;
+    }
+    label{
+        display: block;
+    }
+    form {
+        width: 100%;
+    }
+    /* Style Table */
+    /* table */
+    table.mtable {
+        width: 100%;
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+    }
+    th,
+    td {
+        text-align: left;
+        padding: 16px;
+    }
+    table.mtable tr:nth-child(even) {
+        background:#f2f2f2;
+    }
+    table.mtable td {
+        padding: 10px;
+    }
+    /* list */
+    ul.mtable,
+    ol.mtable {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    ul.mtable li,
+    ol.mtable li {
+        padding: 10px;
+    }
+    ul.mtable li:nth-child(even),
+    ol.mtable li:nth-child(even) {
+        background:#f2f2f2;}
+    .Container{
+        margin: 0;
+        min-width: 800px;
+        max-height: 600px;
+        margin-left: 30px;
+    }
+</style>

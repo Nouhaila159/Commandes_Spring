@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Autres objets bootstrap</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <script src="jquery.min.js"></script>
+  <script src="popper.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Badges</h2>
+  <h1>Exemple du badge <span class="badge badge-secondary">Taille1</span></h1>
+  <h2>Exemple du badge <span class="badge badge-info">Taille2</span></h2>
+  <h3>Exemple du badge <span class="badge badge-pill badge-success">Taille3</span></h3>
+<div> 
+  <button type="button" class="btn btn-primary">
+  Messages <span class="badge badge-light">4</span>
+</button>
+</div>
+<h2>Objet Accordion</h2>  
+  <div id="accordion">
+
+  <div class="card">
+    <div class="card-header">
+      <a class="card-link" data-toggle="collapse" href="#collapseOne">
+        Group Item #1
+      </a>
+    </div>
+    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+      <div class="card-body">
+        Contenue1..
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
+        Groupe Item #2
+      </a>
+    </div>
+    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+      <div class="card-body">
+        Contenue2..
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
+        Groupe Item #3
+      </a>
+    </div>
+    <div id="collapseThree" class="collapse" data-parent="#accordion">
+      <div class="card-body">
+        Contenue3..
+      </div>
+    </div>
+  </div>
+
+</div> 
+
+<h2>bare de progression</h2>
+<div class="progress">
+  <div class="progress-bar" style="width:70%">70%</div>
+</div> 
+
+<h2>bare de pagination</h2>
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="#">Avant</a></li>
+  <li class="page-item"><a class="page-link" href="#">1</a></li>
+  <li class="page-item active"><a class="page-link" href="#">2</a></li>
+  <li class="page-item"><a class="page-link" href="#">3</a></li>
+  <li class="page-item"><a class="page-link" href="#">Apres</a></li>
+</ul> 
+
+<h2>Liste groupe</h2>
+<ul class="list-group">
+  <li class="list-group-item  list-group-item-action active" >Action1</li>
+  <li class="list-group-item list-group-item-action">Action2</li>
+  <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">Action3
+  <span class="badge badge-primary badge-pill">12</span>
+  </li>
+</ul> 
+<h2>Objet card</h2>
+<p>Il permet de définir une carte d identite d un objet à decriver dans la page web</p>
+ <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">titre de la Carte </h4>
+      <p class="card-text">Contenue de la carte avec des images ou autres</p>
+      <a href="#" class="card-link">lien1</a>
+      <a href="#" class="card-link">lien2</a>
+    </div>
+  </div>
+<h3>Exemple card</h3>
+  <div class="card" style="width:300px">
+  <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+  <div class="card-body">
+    <h4 class="card-title">Rachid benyahya</h4>
+    <p class="card-text">Ingenieur en genie informatique option developpement Web </p>
+    <a href="#" class="btn btn-primary">Profil</a>
+  </div>
+</div>
+
+<h2>Objet Collapsible</h2>
+  <p>Il permet de cre
+  er un contenu qui s affiche et se cache par des cliques</p>
+  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Objet collapsible</button>
+  <div id="demo" class="collapse">
+    <p>Ceci est un demo d'un objet collapsible, on en peut creer plusieurs objet.</p> 
+	<p>Aussi on peut jouer sur les couleurs et la taille de l'objet avec le bouton d action toggle</p>
+  </div>
+  
+
+</div>
+</body>
+</html>
