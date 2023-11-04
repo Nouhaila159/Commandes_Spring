@@ -95,8 +95,7 @@
 
     </nav>
     <!-- CONTENU-->
-    <div class="home-content">
-        <div class="overview-boxes">
+
             <div class="Container">
                 <form th:action="@{newArticle}" method="post">
                     <input type="hidden" th:value="${update_article?.id}" name="id">
@@ -134,8 +133,7 @@
                 </form> -->
 
             </div>
-        </div>
-    </div>
+
 
 </section>
 <!-- CONTENU-->
@@ -218,9 +216,14 @@
     ol.mtable li:nth-child(even) {
         background:#f2f2f2;}
     .Container{
-        margin: 0;
-        min-width: 800px;
+        margin: 100px 20px;
+
         max-height: 600px;
-        margin-left: 30px;
+        align-items: flex-start;
+    }
+    .home-section {
+        display: flex;
+        flex-direction: column; /* Empile les éléments verticalement */
+
     }
 </style>

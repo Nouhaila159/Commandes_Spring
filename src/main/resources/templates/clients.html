@@ -103,8 +103,6 @@
         </div>
     </nav>
     <!-- CONTENU-->
-    <div class="home-content">
-        <div class="overview-boxes">
             <div class="Container">
                 <form th:action="@{newClient}" method="post">
                     <label><strong>Ajouter un nouveau client</strong></label>
@@ -143,8 +141,7 @@
 
                 </table>
             </div>
-        </div>
-    </div>
+
 
 </section>
 <script>
@@ -225,9 +222,14 @@
     ol.mtable li:nth-child(even) {
         background:#f2f2f2;}
     .Container{
-        margin: 0;
-        min-width: 1000px;
+        margin: 100px 20px;
+
         max-height: 600px;
-        margin-left: 30px;
+        align-items: flex-start;
+    }
+    .home-section {
+        display: flex;
+        flex-direction: column; /* Empile les éléments verticalement */
+
     }
 </style>

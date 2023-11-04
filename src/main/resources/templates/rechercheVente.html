@@ -103,8 +103,6 @@
         </div>
     </nav>
     <!-- CONTENU-->
-    <div class="home-content">
-        <div class="overview-boxes">
             <div class="Container">
                 <H3><strong>La vente Cherchée</strong></H3>
                 <table class="table table-striped">
@@ -136,8 +134,7 @@
 
                 </table>
             </div>
-        </div>
-    </div>
+
 
 </section>
 <!-- CONTENU-->
@@ -219,9 +216,14 @@
     ol.mtable li:nth-child(even) {
         background:#f2f2f2;}
     .Container{
-        margin: 100;
-        min-width: 1200px;
+        margin: 100px 20px;
+
         max-height: 600px;
         align-items: flex-start;
+    }
+    .home-section {
+        display: flex;
+        flex-direction: column; /* Empile les éléments verticalement */
+
     }
 </style>

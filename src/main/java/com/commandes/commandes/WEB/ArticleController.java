@@ -29,6 +29,7 @@ public class ArticleController {
         model.addAttribute("listArticles", articles);
         List<Categorie> categories = categorieRepo.findAll();
         model.addAttribute("listeCategorie", categories);
+        System.out.println(categories);
         return "article";
 
     }
@@ -38,7 +39,7 @@ public class ArticleController {
     public String AddArticle(Model model) {
         List<Categorie> categories = categorieRepo.findAll();
         model.addAttribute("listeCategorie", categories);
-        return "addArticle";
+        return "addArticles";
     }
 
     @PostMapping(path = "/newArticle")
